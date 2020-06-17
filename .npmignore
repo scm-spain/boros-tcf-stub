@@ -1,0 +1,11 @@
+src
+coverage
+.nyc_output
+.travis.yml
+.idea
+.eslintignore
+.github
+resources
+package
+*.tgz
+versiona.js

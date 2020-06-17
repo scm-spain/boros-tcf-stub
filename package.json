@@ -1,0 +1,73 @@
+{
+  "name": "@adv-ui/boros-tcf-stub",
+  "version": "0.0.1",
+  "description": "Adevinta GDPR - Transparency and Consent Framework - Stub for Boros TCF",
+  "main": "dist",
+  "scripts": {
+    "check": "npm run lint && npm run test",
+    "coverage": "nyc --reporter=html --exclude='\"src/test/**/*Test.js\"' npm run test",
+    "coverage:ci": "nyc --reporter=cobertura --exclude='\"src/test/**/*Test.js\"' npm run test && codecov",
+    "deploy": "rm -Rf ./deploy && npm run deploy:webpack && npm run deploy:s3",
+    "deploy:s3": "node deploy.js",
+    "deploy:webpack": "webpack --config src/webpack/deploy.webpack.config.js --progress --profile --colors --display-error-details --display-cached",
+    "lint": "sui-lint js",
+    "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",
+    "start": "webpack-dev-server --config src/webpack/dev.webpack.config.js",
+    "test": "sui-test server --pattern '\"src/test/**/*Test.js\"'",
+    "versiona": "node versiona.js"
+  },
+  "repository": "github:scm-spain/boros-tcf-stub",
+  "bugs": "https://github.com/scm-spain/boros-tcf-stub/issues",
+  "keywords": [
+    "ads",
+    "advertising",
+    "schibsted",
+    "adevinta",
+    "gdpr",
+    "cmp",
+    "tcf",
+    "tcfv2",
+    "stub",
+    "consent-string",
+    "iab",
+    "boros"
+  ],
+  "author": "One Punch Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "7.8.0",
+    "@babel/core": "7.8.0",
+    "@babel/plugin-transform-modules-commonjs": "7.8.0",
+    "@babel/register": "7.8.0",
+    "@babel/runtime": "7.8.0",
+    "@s-ui/lint": "3",
+    "@s-ui/test": "2",
+    "babel-loader": "8.0.6",
+    "babel-plugin-transform-define": "2.0.0",
+    "babel-preset-sui": "3",
+    "chai": "4.2.0",
+    "clean-webpack-plugin": "3.0.0",
+    "codecov": "3.6.5",
+    "html-webpack-plugin": "4.0.4",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
+    "mocha": "5.2.0",
+    "nock": "12.0.3",
+    "nyc": "15.0.0",
+    "sinon": "9.0.2",
+    "versiona": "4",
+    "webpack": "4.42.1",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "prettier": "./node_modules/@s-ui/lint/.prettierrc.js",
+  "stylelint": {
+    "extends": "./node_modules/@s-ui/lint/stylelint.config.js"
+  },
+  "dependencies": {}
+}
