@@ -2,7 +2,7 @@ import {registerTcfApiLocator} from './registerTcfApiLocator'
 import {registerIframeMessageHandler} from './registerIframeMessageHandler'
 import {registerTcfApiHandler} from './registerTcfApiHandler'
 
-export const registerStub = () => {
+export const registerStub = ({onReady} = {}) => {
   if (typeof window === 'undefined') {
     return
   }
@@ -10,5 +10,5 @@ export const registerStub = () => {
     return
   }
   registerIframeMessageHandler()
-  registerTcfApiHandler()
+  registerTcfApiHandler({onReady})
 }

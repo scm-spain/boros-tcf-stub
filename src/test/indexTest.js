@@ -5,7 +5,7 @@ import {waitUntil} from '../main/service/waitUntil'
 
 describe('boros tcf stub', () => {
   beforeEach(() => {
-    jsdom(null, {runScripts: 'dangerously'})
+    jsdom()
     window.postMessage = message => {
       const event = new window.MessageEvent('message', {
         data: message,
@@ -34,6 +34,13 @@ describe('boros tcf stub', () => {
     window.__tcfapi('anyOtherCommand', 2, () => null)
     pending = window.__tcfapi('pending')
     expect(pending.length).to.equal(1)
+  })
+
+  it('should register an onReady function', done => {
+    registerStub({onReady: () => done()})
+    const onReady = window.__tcfapi('onReady')
+    expect(onReady).to.be.a('function')
+    onReady()
   })
 
   it('should accept iframe communications', () => {
