@@ -24,6 +24,7 @@ The Boros TCF stub implements the [standard TCF v2 stub](https://github.com/Inte
 - Stubs the `window.__tcfapi` responding immediately to the commands
   - `ping` [See PingReturn in the stubbed __tcfapi](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#requirements-for-the-cmp-stub-api-script)
   - `pending` returns the pending calls accumulated while calling `window.__tcfapi` commands
+  - `onReady` returns the optional registered `onReady` callback
 
 - Initializes the cross-framee communication via `postMessagee`, [see usage details](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#how-can-vendors-that-use-iframes-call-the-cmp-api-from-an-iframe)
 
@@ -43,9 +44,22 @@ npm i @adv-ui/boros-tcf-stub --save
 import registerStub from '../main'
 
 // do your magic
-
 registerStub()
 ```
+
+**Register the Stub with an onReady callback**
+
+This allows creating additional commands that can have access to the Boros TCF API facade.
+
+```
+import registerStub from '../main'
+
+const onReady = api => initializeCustomCommands(api)
+ 
+registerStub({onReady})
+```
+
+> The `onReady` callback will be called after Boros TCF initializes the `window.__tcfapi` and before processing any pending command in the stub's queue.
 
 > Remember that the Stub **must** be registered before any script depending on the TCF is loaded
 
@@ -59,6 +73,8 @@ registerStub()
   async="false" 
 />
 ```
+
+> This does not accept registering an `onReady` callback. Import the `registerStub` and generate your own script if it's a need.
 
 ## License
 Boros TCF Stub is [MIT licensed](./LICENSE).
