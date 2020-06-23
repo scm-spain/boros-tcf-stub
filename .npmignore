@@ -1,4 +1,5 @@
 src
+deploy
 coverage
 .nyc_output
 .travis.yml
@@ -9,3 +10,6 @@ resources
 package
 *.tgz
 versiona.js
+deploy.js
+mocha.config.js
+.babelrc.js

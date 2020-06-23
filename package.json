@@ -4,14 +4,16 @@
   "description": "Adevinta GDPR - Transparency and Consent Framework - Stub for Boros TCF",
   "main": "dist",
   "scripts": {
+    "build": "rm -Rf dist && babel src/main --out-dir dist",
     "check": "npm run lint && npm run test",
     "coverage": "nyc --reporter=html --exclude='\"src/test/**/*Test.js\"' npm run test",
     "coverage:ci": "nyc --reporter=cobertura --exclude='\"src/test/**/*Test.js\"' npm run test && codecov",
-    "deploy": "rm -Rf ./deploy && npm run deploy:webpack && npm run deploy:s3",
+    "deploy": "rm -Rf deploy && npm run deploy:webpack && npm run deploy:s3",
     "deploy:s3": "node deploy.js",
     "deploy:webpack": "webpack --config src/webpack/deploy.webpack.config.js --progress --profile --colors --display-error-details --display-cached",
     "lint": "sui-lint js",
     "phoenix": "rm -Rf node_modules && rm -Rf package-lock.json && npm i",
+    "prepack": "npm run build",
     "start": "webpack-dev-server --config src/webpack/dev.webpack.config.js",
     "test": "sui-test server --pattern '\"src/test/**/*Test.js\"'",
     "versiona": "node versiona.js"

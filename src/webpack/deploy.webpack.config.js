@@ -11,7 +11,7 @@ module.exports = [
   {
     devtool: distMinified ? false : 'inline-source-map',
     entry: {
-      BorosTcfStub: './src/main/index.js'
+      BorosTcfStub: './src/webpack/standalone.index.js'
     },
     output: {
       path: path.resolve(path.join(__dirname, '/../../', 'deploy')),
