@@ -6,6 +6,10 @@ export const registerStub = ({onReady} = {}) => {
   if (typeof window === 'undefined') {
     return
   }
+  if (window.__tcfapi) {
+    console.warn('[BorosTcf] attempted to register the stub twice')
+    return
+  }
   if (!registerTcfApiLocator()) {
     return
   }
