@@ -43,7 +43,7 @@
     "@babel/register": "7.8.0",
     "@babel/runtime": "7.8.0",
     "@s-ui/lint": "3",
-    "@s-ui/test": "2",
+    "@s-ui/test": "4",
     "babel-loader": "8.0.6",
     "babel-plugin-transform-define": "2.0.0",
     "babel-preset-sui": "3",
@@ -51,9 +51,8 @@
     "clean-webpack-plugin": "3.0.0",
     "codecov": "3.6.5",
     "html-webpack-plugin": "4.0.4",
-    "jsdom": "16.2.2",
+    "jsdom": "16.5.1",
     "jsdom-global": "3.0.2",
-    "mocha": "5.2.0",
     "nock": "12.0.3",
     "nyc": "15.0.0",
     "s3-folder-upload": "2.3.0",
@@ -71,6 +70,5 @@
   "prettier": "./node_modules/@s-ui/lint/.prettierrc.js",
   "stylelint": {
     "extends": "./node_modules/@s-ui/lint/stylelint.config.js"
-  },
-  "dependencies": {}
+  }
 }
